@@ -1,0 +1,35 @@
+.users_export {
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+}
+
+.users_export .header td {
+  font-weight: bold;
+  font-size: 120%;
+  padding: 20px 10px 10px 10px;
+  border-bottom: 1px solid #ccc;
+  border-left: none;
+}
+
+.users_export tr td:first-child {
+  width: 70%;
+}
+
+.users_export tr td:last-child {
+  width: 30%;
+}
+
+.users_export tr td label {
+  cursor: pointer;
+}
+
+.users_export_buttoms .submit {
+  display: block;
+  float: left;
+  margin: 15px 20px 15px 0;
+}
+
+.users_export_buttoms .back {
+  display: block;
+  margin: 22px 0 0 0;
+}

@@ -1,0 +1,23 @@
+ru:
+  users_export_enabled: 'Плагин включен'
+  users_export_fields_saved: 'Настройки полей сохранены'
+
+  settings:
+    redmine_fields:
+      header: 'Стандартные поля'
+
+      login: 'Пользователь (логин)'
+      firstname: 'Имя'
+      lastname: 'Фамилия'
+      admin: 'Администратор'
+      status: 'Статус'
+      mail_notification: 'Получает оповещения на email?'
+      last_login_on: 'Последнее подключение'
+      created_on: 'Создан (дата)'
+      updated_on: 'Последние изменения данных о пользователе (дата)'
+      type: 'Тип пользователя'
+      mail: 'Email'
+      groups: 'Состоит в группах'
+
+    custom_fields:
+      header: 'Настраиваемые поля'

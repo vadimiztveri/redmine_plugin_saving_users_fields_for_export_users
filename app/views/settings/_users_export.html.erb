@@ -1,0 +1,56 @@
+<%= stylesheet_link_tag 'users-export.css', plugin: :users_export %>
+
+<table class='plugin_settings users_export'>
+  <tr>
+    <td>
+      <label for='settings_users_export_enabled'>
+        <%= l(:users_export_enabled) %>
+      </label>
+    </td>
+    <td>
+      <%= check_box_tag 'settings[users_export_enabled]', 1, @settings['users_export_enabled'] %>
+    </td>
+  </tr>
+
+  <tr class='header'>
+    <td>
+      <%= l('settings.redmine_fields.header') %>
+    </td>
+    <td></td>
+  </tr>
+
+  <% redmine_fields = GetUsersExportFields.redmine_fields_default %>
+  <% redmine_fields.each do |key, value| %>
+    <tr>
+      <td>
+        <label for='settings_default_fields_<%= key %>'>
+          <%= l("settings.redmine_fields.#{key}") %>
+        </label>
+      </td>
+      <td>
+        <%= check_box_tag "settings[default_fields][#{key}]", 1, @settings['default_fields'][key] %>
+      </td>
+    </tr>
+  <% end %>
+
+  <tr class='header'>
+    <td>
+      <%= l('settings.custom_fields.header') %>
+    </td>
+    <td></td>
+  </tr>
+
+  <% user_custom_fields = GetUsersExportFields.user_custom_fields_default %>
+  <% user_custom_fields.each do |custom_field_data| %>
+    <tr>
+      <td>
+        <label for='settings_default_fields_<%= custom_field_data[:custom_field_id] %>'>
+          <%= custom_field_data[:name] %>
+        </label>
+      </td>
+      <td>
+        <%= check_box_tag "settings[default_fields][#{custom_field_data[:custom_field_id]}]", 1, custom_field_data[:value] %>
+      </td>
+    </tr>
+  <% end %>
+</table>

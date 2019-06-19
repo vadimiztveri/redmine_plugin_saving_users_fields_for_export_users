@@ -1,0 +1,56 @@
+<%= stylesheet_link_tag 'users-export.css', plugin: :users_export %>
+
+<h1>
+  Настроить поля для выгрузки в XLSX
+</h1>
+
+<%= form_tag(users_export_fields_path, :method => 'patch') do %>
+  <table class='plugin_settings users_export'>
+    <tr class='header'>
+      <td>
+        <%= l('settings.redmine_fields.header') %>
+      </td>
+      <td></td>
+    </tr>
+
+    <% fields = GetUsersExportFields.redmine_fields_default %>
+    <% fields.each do |key, value| %>
+      <tr>
+        <td>
+          <label for='users_export_field_<%= key %>'>
+            <%= l("settings.redmine_fields.#{key}") %>
+          </label>
+        </td>
+        <td>
+          <%= check_box_tag "users_export_field[#{key}]", 1, @users_export_field.fields[key.to_s].present? %>
+        </td>
+      </tr>
+    <% end %>
+
+    <tr class='header'>
+      <td>
+        <%= l('settings.custom_fields.header') %>
+      </td>
+      <td></td>
+    </tr>
+
+    <% user_custom_fields = GetUsersExportFields.user_custom_fields_default %>
+    <% user_custom_fields.each do |custom_field_data| %>
+      <tr>
+        <td>
+          <label for='users_export_field_<%= custom_field_data[:custom_field_id] %>'>
+            <%= custom_field_data[:name] %>
+          </label>
+        </td>
+        <td>
+          <%= check_box_tag "users_export_field[#{custom_field_data[:custom_field_id]}]", 1, @users_export_field.fields[custom_field_data[:custom_field_id]].present? %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+
+  <dev class='users_export_buttoms'>
+    <%= submit_tag l(:button_save), class: 'submit' %>
+    <%= link_to l(:button_cancel), users_url, class: 'back' %>
+  </dev>
+<% end %>
